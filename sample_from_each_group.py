@@ -1,19 +1,21 @@
 import pandas as pd
-from typing import Union
+from typing import Union, Optional
 
 
 def sample_from_each_group(data: pd.DataFrame,
+                           group_col: str,
                            n: Union[int, None],
-                           frac: Union[float, None],
-                           group_col: str) -> pd.DataFrame:
+                           frac: Optional[Union[float, None]] = None) \
+                           -> pd.DataFrame:
     """Function that takes a pandas dataframe and returns a sample from each
         group given by the number of samples or percentage.
 
     Args:
         data (pd.DataFrame): Dataset
-        n (Union[int, None]): Number of samples want from each group
-        frac (Union[float, None]): % of samples want from each group
         group_col (str): Column name of the group
+        n (Union[int, None]): Number of samples want from each group
+        frac (Optional[Union[float, None]]): % of samples want from each group
+            Defaults to None
 
     Returns:
         pd.DataFrame: Sampled data
